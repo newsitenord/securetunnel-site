@@ -13,6 +13,7 @@ const {
   updated = site.factsVerifiedOn,
   noindex = false,
   schema = null,
+  googleSiteVerification = null,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, site.url).href;
@@ -30,6 +31,7 @@ const safeDescription = fitDescription(description);
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{fullTitle}</title>
   <meta name="description" content={safeDescription} />
+  {googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
   {noindex ? <meta name="robots" content="noindex,nofollow" /> : <link rel="canonical" href={canonical} />}
   <meta name="generator" content={Astro.generator} />
   <meta name="theme-color" content="#0b6b5b" />
