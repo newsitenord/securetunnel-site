@@ -37,7 +37,7 @@ Open `src/config.js` and change one line:
 
 ```js
 export const site = {
-  url: 'https://securetunnel.co',   // <-- your real domain
+  url: 'https://securetunnel.netlify.app',   // <-- your real domain
   ...
 }
 ```

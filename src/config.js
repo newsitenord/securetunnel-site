@@ -10,8 +10,7 @@
 // =============================================================================
 
 export const site = {
-  // >>> CHANGE THIS ONCE YOUR DOMAIN IS LIVE <<<
-  url: 'https://securetunnel.co',
+  url: 'https://securetunnel.netlify.app',
   name: 'SecureTunnel',
   tagline: 'Independent VPN testing, deals and country-by-country privacy guides',
   description:

@@ -1,13 +1,9 @@
 import { defineConfig } from 'astro/config';
+import { site } from './src/config.js';
 
-// ---------------------------------------------------------------------------
-// siteURL is the ONLY place your domain lives. Change it once, rebuild, and
-// every canonical tag, sitemap entry, Open Graph URL and RSS link updates.
-// ---------------------------------------------------------------------------
-const siteURL = 'https://securetunnel.co';
-
+// The production URL is defined once in src/config.js and reused by Astro.
 export default defineConfig({
-  site: siteURL,
+  site: site.url,
   trailingSlash: 'never',
   build: {
     format: 'directory',
