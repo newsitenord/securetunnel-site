@@ -1,0 +1,10 @@
+---
+import { legal } from '../config.js';
+const { variant = 'short' } = Astro.props;
+---
+<p class="disclosure">
+  <strong>Affiliate disclosure.</strong>
+  {variant === 'long'
+    ? ` Some links on this page are NordVPN affiliate links. If you buy a subscription through one of them, we may earn a commission from NordVPN. This costs you nothing extra \u2014 the price you pay is identical whether you use our link or go direct. It does not influence what we write: we recommend services on their merits, we publish the downsides alongside the upsides, and we do not accept payment for favourable coverage. Full details on our <a href="/affiliate-disclosure">affiliate disclosure</a> and <a href="/editorial-policy">testing methodology</a> pages.`
+    : legal.disclosureShort}
+</p>

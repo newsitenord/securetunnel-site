@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0b6b5b"/>
+  <g transform="translate(100 200)">
+    <path d="M0-90-70-58v62c0 49 31 94 70 108 39-14 70-59 70-108v-62L0-90Z" fill="#fff" opacity=".95"/>
+  </g>
+  <text x="230" y="290" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="86" font-weight="800" fill="#ffffff" letter-spacing="-2">SecureTunnel</text>
+  <text x="232" y="360" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="38" fill="#bfe3db">Independent VPN testing, deals and country guides</text>
+</svg>

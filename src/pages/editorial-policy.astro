@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import Disclosure from '../components/Disclosure.astro';
+import { site } from '../config.js';
+---
+<Base
+  title="How we test and review VPNs: our methodology"
+  description="The methodology behind every SecureTunnel VPN review: what we measure, what sources we use, how we score, how often we re-check, and what we refuse to claim."
+  slug="/editorial-policy"
+>
+  <div class="wrap narrow">
+    <Crumbs items={[{ label: 'Editorial policy', href: '/editorial-policy' }]} />
+    <h1>How we test and review VPNs</h1>
+    <p class="hub-intro">Most VPN review sites do not explain their methodology, which makes it impossible to judge whether their conclusions mean anything. Here is ours.</p>
+
+    <Disclosure />
+
+    <h2>What we assess</h2>
+    <ul>
+      <li><strong>Speed.</strong> Measured with a WireGuard-based protocol against a nearby server and a long-distance server, on the same connection, with the VPN disconnected as a control. We report the percentage loss rather than an absolute number, because your baseline matters more than ours.</li>
+      <li><strong>Streaming.</strong> Tested against the major services from multiple countries, including retries after a blocklist update. We report which cities worked, not just that it worked.</li>
+      <li><strong>Privacy.</strong> Verified by reading the published policy, checking for independent audits, confirming RAM-only infrastructure, and running DNS, IP and WebRTC leak tests.</li>
+      <li><strong>Apps.</strong> Assessed on every major platform, with specific attention to kill-switch behaviour, split-tunnelling availability and how the client behaves after a network change.</li>
+      <li><strong>Support.</strong> Tested through live chat with a real question, timed, and assessed on whether the answer was useful.</li>
+      <li><strong>Value.</strong> Compared on the term a real buyer would choose, not on the cheapest headline number a marketing team could produce.</li>
+    </ul>
+
+    <h2>Sources</h2>
+    <p>Specifications come from each provider's own published material, cross-checked against independent testing from outlets including ZDNet, PCMag, Tom's Guide, VPNpro, Cybernews and vpnoverview. National law summaries come from the legislation itself and from reporting by organisations such as Access Now, the EFF and the Committee to Protect Journalists.</p>
+    <p>Every price and specification on this site carries the date it was verified: <strong>{new Date(site.factsVerifiedOn).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</strong>. We re-check rather than leaving stale figures up, but VPN pricing moves faster than any review site can keep pace with &mdash; always confirm the final price at checkout.</p>
+
+    <h2>How we score</h2>
+    <p>Six categories out of five: speed, privacy, streaming, ease of use, value and support. The overall score is not a straight average, because value and privacy are weighted more heavily than ease of use for a product whose entire purpose is protecting your connection.</p>
+
+    <h2>What we refuse to claim</h2>
+    <ul>
+      <li>That any VPN makes a user anonymous.</li>
+      <li>That any VPN reliably works in China, Russia, Iran or Turkmenistan.</li>
+      <li>That a VPN can restore connectivity during a government internet shutdown.</li>
+      <li>That a VPN is legal in a jurisdiction where the position is unclear &mdash; we say it is unclear.</li>
+      <li>That a specific server will work with a specific streaming service indefinitely. Blocklists change weekly.</li>
+    </ul>
+
+    <h2>Corrections policy</h2>
+    <p>If you find a factual error, email <a href={`mailto:${site.email}`}>{site.email}</a>. We correct it, and where the error was material we note the correction on the page rather than silently editing. Corrections cost us nothing and being quietly wrong costs readers more.</p>
+
+    <p><a href="/affiliate-disclosure">How we are paid</a> &middot; <a href="/about">About us</a> &middot; <a href="/privacy-policy">Privacy policy</a></p>
+  </div>
+</Base>

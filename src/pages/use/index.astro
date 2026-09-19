@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Disclosure from '../../components/Disclosure.astro';
+import Cta from '../../components/Cta.astro';
+import usecases from '../../data/usecases.js';
+---
+<Base
+  title={`VPN by use case: ${usecases.length} practical guides`}
+  description={`VPN guides by use case \u2014 torrenting, gaming, streaming, remote work, public Wi-Fi, travel, privacy, students, journalism and censorship. What actually matters for each.`}
+  slug="/use"
+  ogType="website"
+>
+  <div class="wrap">
+    <Crumbs items={[{ label: 'Use cases', href: '/use' }]} />
+    <h1>VPN by use case</h1>
+    <p class="hub-intro">"Best VPN" depends entirely on what you need it for. The right answer for torrenting is not the right answer for gaming, and the right answer for a journalist is not the right answer for a student on campus Wi-Fi. Each guide below starts with what actually matters for that use case, including where a VPN makes things worse.</p>
+
+    <Disclosure />
+
+    <Cta slug="hub-usecases" compact />
+
+    <div class="grid-2">
+      {usecases.map((u) => (
+        <a class="card" href={`/use/vpn-for-${u.id}`}>
+          <h3>{u.name}</h3>
+          <p>{u.keyFeatures.join(' &middot; ')}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</Base>

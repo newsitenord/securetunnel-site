@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Disclosure from '../../components/Disclosure.astro';
+import Cta from '../../components/Cta.astro';
+import troubleshooting from '../../data/troubleshooting.js';
+---
+<Base
+  title={`NordVPN troubleshooting: ${troubleshooting.length} common fixes`}
+  description={`NordVPN not working? ${troubleshooting.length} troubleshooting guides \u2014 connection failures, Netflix M7111 errors, slow speeds, DNS and IP leaks, kill switch, mobile drops and router setup.`}
+  slug="/fix"
+  ogType="website"
+>
+  <div class="wrap">
+    <Crumbs items={[{ label: 'Troubleshooting', href: '/fix' }]} />
+    <h1>NordVPN troubleshooting</h1>
+    <p class="hub-intro">Every guide below lists the fixes in order of likelihood rather than in a random order, because working through a list of twelve things when the answer is number two wastes twenty minutes. Each one explains what the fix actually addresses, so you can judge whether it applies.</p>
+
+    <Disclosure />
+
+    <Cta slug="hub-fix" compact />
+
+    <div class="grid-2">
+      {troubleshooting.map((x) => (
+        <a class="card" href={`/fix/${x.id}`}>
+          <p class="meta">{x.fixes.length} fixes</p>
+          <h3>{x.name}</h3>
+          <p>{x.symptom}</p>
+        </a>
+      ))}
+    </div>
+
+    <div class="note info">
+      <strong>Before you start:</strong> disconnect the VPN and confirm your connection works normally. Roughly a third of reported VPN problems turn out to be an ISP or router issue that was already there.
+    </div>
+  </div>
+</Base>

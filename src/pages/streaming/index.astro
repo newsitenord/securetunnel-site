@@ -1,0 +1,62 @@
+---
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Disclosure from '../../components/Disclosure.astro';
+import Cta from '../../components/Cta.astro';
+import platforms, { watchMatrix } from '../../data/platforms.js';
+import countries from '../../data/countries.js';
+import { site } from '../../config.js';
+
+const countryById = Object.fromEntries(countries.map((c) => [c.id, c]));
+let total = 0;
+for (const [pid, list] of Object.entries(watchMatrix)) {
+  if (platforms.find((p) => p.id === pid)) total += list.filter((cid) => countryById[cid]).length;
+}
+---
+<Base
+  title={`VPN for streaming: ${platforms.length} platforms, ${total} country guides`}
+  description={`Streaming VPN guides for ${platforms.length} platforms \u2014 Netflix, Disney+, Hulu, Max, BBC iPlayer, Peacock, DAZN and more. Real server picks, error codes and the fixes that work.`}
+  slug="/streaming"
+  ogType="website"
+>
+  <div class="wrap">
+    <Crumbs items={[{ label: 'Streaming', href: '/streaming' }]} />
+    <p class="count">{platforms.length} platforms &middot; {total} country guides &middot; verified {new Date(site.factsVerifiedOn).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+    <h1>VPN for streaming and unblocking</h1>
+    <p class="hub-intro">Streaming is where cheap VPNs fall apart, and where vague advice is most common. "Use a US server" is not guidance. Below, each platform has its own failure modes, its own error codes, and a specific list of servers that work &mdash; then a guide for each country you might be watching from.</p>
+
+    <Disclosure />
+
+    <Cta slug="hub-streaming" compact />
+
+    {platforms.map((p) => {
+      const list = (watchMatrix[p.id] ?? []).filter((cid) => countryById[cid]);
+      return (
+        <section id={p.slugBase} style="margin-bottom:2.5rem">
+          <h2>{p.name}</h2>
+          <p><strong>Access rating:</strong> {p.vpnSuccess} &middot; <strong>Difficulty:</strong> {p.difficulty}/5 &middot; <strong>Best servers:</strong> {p.bestServers.join(', ')}</p>
+          <p>{p.catalogueNote}</p>
+          <div class="grid">
+            {list.map((cid) => (
+              <a class="card" href={`/watch/${p.slugBase}/${cid}`}>
+                <h3>{countryById[cid].name}</h3>
+                <p>{countryById[cid].region}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      );
+    })}
+
+    <h2>The general principles</h2>
+    <ul>
+      <li><strong>Blocklists are per IP range, not per provider.</strong> When a range is flagged, switching to a different city in the same country fixes it far more often than switching provider.</li>
+      <li><strong>Clear the cached session.</strong> Streaming services label your session with the region it started in. A private window, or a signed-out restart of the app, is the step most people skip.</li>
+      <li><strong>Connect before you open the app.</strong> TV and console apps determine your region at launch and cache it hard.</li>
+      <li><strong>Live sport is always harder than on-demand.</strong> Rights are sold per territory for large sums, so enforcement on live events is stricter across every service.</li>
+      <li><strong>Network size wins over time.</strong> A provider with more addresses to rotate through recovers from a blocklist update faster. This is the difference that shows up six months after you buy.</li>
+    </ul>
+
+    <p><a href="/guides/how-to-change-netflix-region">Read the full guide to changing your Netflix region</a> &middot; <a href="/fix/netflix-blocked">Fix Netflix error M7111-5059</a></p>
+  </div>
+</Base>

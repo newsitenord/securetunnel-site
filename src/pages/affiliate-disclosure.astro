@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import { affiliate, site, legal } from '../config.js';
+---
+<Base
+  title="Affiliate disclosure: how this site makes money"
+  description="A plain-language explanation of how SecureTunnel is funded, which links are affiliate links, what that does and does not influence, and how to identify our links."
+  slug="/affiliate-disclosure"
+>
+  <div class="wrap narrow">
+    <Crumbs items={[{ label: 'Affiliate disclosure', href: '/affiliate-disclosure' }]} />
+    <h1>Affiliate disclosure</h1>
+    <p class="hub-intro">This page exists because affiliate relationships are a real conflict of interest, and the honest response is to explain the arrangement rather than bury a sentence in a footer.</p>
+
+    <h2>The short version</h2>
+    <p>{legal.disclosureShort}</p>
+
+    <h2>How it works</h2>
+    <p>{site.name} participates in the NordVPN affiliate programme, operated through Impact. When you click one of our links and buy a subscription, NordVPN pays us a percentage of the sale. The commission is funded by NordVPN's marketing budget, not by you &mdash; the price you pay is identical whether you arrive through our link or by typing nordvpn.com into your browser.</p>
+
+    <h2>How to identify our affiliate links</h2>
+    <p>Every affiliate link on this site:</p>
+    <ul>
+      <li>Points to <code>{affiliate.baseUrl}</code></li>
+      <li>Carries the HTML attribute <code>rel="nofollow sponsored noopener noreferrer"</code>, which tells search engines it is a paid placement</li>
+      <li>Opens in a new tab</li>
+      <li>Appears inside a green offer box, or as a button labelled "{affiliate.ctaPrimary}"</li>
+      <li>Is preceded by the affiliate disclosure notice on every page that contains one</li>
+    </ul>
+
+    <h2>What the arrangement does influence</h2>
+    <p>Being honest: it influences which services we cover most extensively. NordVPN has the most pages on this site because it is the service we are paid to promote. That is a real bias in coverage volume, and you should weigh it.</p>
+
+    <h2>What it does not influence</h2>
+    <ul>
+      <li><strong>What we say about the service.</strong> Every review lists what we did not like with equal prominence.</li>
+      <li><strong>Whether we recommend alternatives.</strong> <a href="/nordvpn/alternatives">This page</a> exists specifically to point readers elsewhere when another service suits them better.</li>
+      <li><strong>Whether we publish negative findings.</strong> We publish them whether or not they reduce our commission.</li>
+      <li><strong>Our scoring.</strong> Scores are set before we consider the affiliate relationship.</li>
+    </ul>
+
+    <h2>Compliance</h2>
+    <p>This disclosure is provided in line with the FTC Endorsement Guides (16 CFR Part 255), which require that material connections between a reviewer and a brand be disclosed clearly and conspicuously. The notice appears at the top of every page containing an affiliate link, not only in the footer.</p>
+
+    <h2>Trademark</h2>
+    <p>{legal.trademarkNotice}</p>
+
+    <h2>Questions</h2>
+    <p>Email <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+
+    <p><a href="/about">About us</a> &middot; <a href="/editorial-policy">How we test</a> &middot; <a href="/privacy-policy">Privacy policy</a></p>
+  </div>
+</Base>

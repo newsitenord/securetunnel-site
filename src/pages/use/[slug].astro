@@ -1,0 +1,68 @@
+---
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Cta from '../../components/Cta.astro';
+import Disclosure from '../../components/Disclosure.astro';
+import Faq from '../../components/Faq.astro';
+import nordvpn from '../../data/nordvpn.js';
+import usecases from '../../data/usecases.js';
+import { site, fitTitle } from '../../config.js';
+
+export function getStaticPaths() {
+  return usecases.map((u) => ({ params: { slug: `vpn-for-${u.id}` }, props: { u } }));
+}
+
+const { u } = Astro.props;
+const n = nordvpn;
+const t = n.pricing.tiers[0];
+
+const faqs = [
+  ...u.faq,
+  { q: `Is NordVPN good for ${u.name.toLowerCase()}?`, a: `${u.hook} NordVPN's ${u.keyFeatures.length > 0 ? u.keyFeatures.slice(0, 3).join(', ').toLowerCase() : 'feature set'} is what makes it work for this.` },
+];
+
+const others = usecases.filter((o) => o.id !== u.id).slice(0, 6);
+---
+<Base
+  title={fitTitle(`Best VPN for ${u.name}`, ' in 2026')}
+  description={`VPN for ${u.name.toLowerCase()}: ${u.keyFeatures.join(', ')}. What genuinely matters, what marketing gets wrong, and how to set NordVPN up for it.`}
+  slug="/use"
+>
+  <div class="wrap">
+    <Crumbs items={[{ label: 'Use cases', href: '/use' }, { label: u.name, href: `/use/vpn-for-${u.id}` }]} />
+
+    <article class="narrow">
+      <p class="count">Verified {new Date(site.factsVerifiedOn).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+      <h1>Best VPN for {u.name}</h1>
+      <p class="hub-intro">{u.hook}</p>
+
+      <Disclosure />
+
+      <div class="verdict">
+        <h3>Features that matter here</h3>
+        <p>{u.keyFeatures.join(' &middot; ')}</p>
+      </div>
+
+      {u.body.map((para) => <p>{para}</p>)}
+
+      {u.warnings && (
+        <div class="note">
+          <strong>Worth being clear about:</strong> {u.warnings}
+        </div>
+      )}
+
+      <Cta slug={`use-${u.id}`} title={`NordVPN from $${t.twoYear}/month`} body={`${n.network.servers} servers in ${n.network.countries} countries. ${n.pricing.guarantee}, so you can test it on your own setup.`} />
+
+      <Faq faqs={faqs} />
+
+      <section class="related">
+        <h2>Other use cases</h2>
+        <div class="grid">
+          {others.map((o) => (
+            <a class="card" href={`/use/vpn-for-${o.id}`}><h3>{o.name}</h3><p>{o.intent}</p></a>
+          ))}
+        </div>
+      </section>
+    </article>
+  </div>
+</Base>
