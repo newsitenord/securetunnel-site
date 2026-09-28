@@ -2,7 +2,6 @@
 import Base from '../../layouts/Base.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Cta from '../../components/Cta.astro';
-import Disclosure from '../../components/Disclosure.astro';
 import Faq from '../../components/Faq.astro';
 import nordvpn from '../../data/nordvpn.js';
 import guides from '../../data/guides.js';
@@ -36,8 +35,7 @@ const others = guides.filter((o) => o.id !== g.id).slice(0, 6);
       <h1>{g.name}</h1>
       <p class="hub-intro">{g.intro}</p>
 
-      <Disclosure />
-
+  
       {g.steps.length > 0 && (
         <>
           <h2 id="steps">Step by step</h2>
