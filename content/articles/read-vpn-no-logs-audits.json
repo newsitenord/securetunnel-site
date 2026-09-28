@@ -1,0 +1,133 @@
+{
+  "slug": "read-vpn-no-logs-audits",
+  "status": "published",
+  "title": "How to read a VPN no-logs policy and audit",
+  "description": "Evaluate VPN no-logs claims by checking data categories, audit scope, dates, exclusions, remediation and the difference between policy and evidence.",
+  "intent": "evaluate the evidence behind VPN no logs claims and independent audits",
+  "intro": "“No logs” is a claim that needs a definition. It might refer to browsing activity, connection records or a narrower category, while billing and support systems still hold information. An audit can add evidence, but only for the systems, dates and criteria it examined. This guide is a reading framework, not a declaration that any named provider is anonymous or that an audit guarantees future behavior. Use it to ask better questions before placing trust in a service.",
+  "method": "documentation",
+  "author": "SecureTunnel",
+  "publishedAt": "2026-09-28",
+  "updatedAt": "2026-09-28",
+  "sourcesCheckedOn": "2026-09-28",
+  "sections": [
+    {
+      "id": "separate-the-slogan-from-the-policy",
+      "title": "Separate the slogan from the policy",
+      "paragraphs": [
+        "Begin with the provider's actual policy, not the short claim on a pricing card. Look for explicit categories: source IP addresses, destination addresses, DNS queries, connection timestamps, bandwidth totals, device identifiers, account information and payment records. The relevant question is not whether the page contains the phrase no logs, but which information is collected, whether it is stored, for what purpose and for how long. A policy that distinguishes those categories gives you more to assess than an undefined promise of complete privacy.",
+        "Mullvad's published policy provides an example of this distinction. It states a position on activity logging while separately discussing account, payment, support and other data handling. That document is useful for learning how to read categories, but it remains the provider's own statement. It is not, by itself, independent verification of every implementation detail. Apply the same distinction to any brand, including one recommended by an affiliate site. A provider's policy is one part of an evidence file, not the entire file."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "distinguish-observation-from-retention",
+      "title": "Distinguish observation from retention",
+      "paragraphs": [
+        "A service can need to process information to forward traffic without retaining a historical activity record. Conversely, a statement that it does not store browsing history does not necessarily describe every diagnostic or account system. Think in stages: what reaches the service, what is processed while a connection exists, what is written to persistent storage, who can access that storage and when it is deleted. This framework is more precise than treating all possible visibility as equivalent to permanent logging.",
+        "HTTPS also changes what an intermediary can observe. Under an ordinary secure web connection, the encrypted page content is not simply readable because traffic passes through a VPN. Metadata, destination information and unencrypted protocols raise different questions. Do not infer that a no-logs claim means the provider is technically incapable of observing any connection information, or that a VPN can read every HTTPS password by default. Both exaggerations obscure the specific information a policy or audit needs to address."
+      ],
+      "sourceIds": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": "identify-what-kind-of-audit-was-performed",
+      "title": "Identify what kind of audit was performed",
+      "paragraphs": [
+        "The word audit can describe different assessments. An application security review might examine code, local storage and exploitable vulnerabilities. An infrastructure assessment might inspect server configuration and administrative access. A no-logs assessment may focus on particular data-retention claims and the controls intended to enforce them. An organization-wide compliance engagement has its own defined criteria. Do not assume that evidence from one category automatically establishes conclusions in all the others. Read the engagement's own description before interpreting a badge or headline.",
+        "A useful first note is a plain-language statement of scope: who examined what, against which criteria, during which period. If all you can find is a press release saying the provider passed, record that limitation rather than filling the gap with assumptions. You can still consider the announcement, but distinguish it from an available report containing methodology, scope and findings. EFF treats public third-party audits as a transparency signal while explicitly warning that practices can change after the assessment."
+      ],
+      "sourceIds": [
+        1
+      ]
+    },
+    {
+      "id": "read-the-date-and-coverage-boundaries",
+      "title": "Read the date and coverage boundaries",
+      "paragraphs": [
+        "Check the fieldwork dates, report date and the systems or product versions covered. A report published recently may describe work performed earlier. A review of one application does not automatically include another operating system, a browser extension, every server location or a newly acquired business. These boundaries are normal features of an assessment, not automatic proof of dishonesty. They become a problem when marketing presents a limited engagement as a timeless guarantee covering everything the company does.",
+        "Create a short coverage table for your own use: the service you plan to use, the platform, the relevant data category and the evidence that addresses it. Mark unknowns plainly. If the latest report excludes the system most important to your decision, ask for clarification or choose a service with evidence better matched to your needs. Avoid treating the number of audits as a score by itself. Several narrow reports can leave a critical gap, while one well-described assessment may answer a particular question directly."
+      ],
+      "sourceIds": [
+        1
+      ]
+    },
+    {
+      "id": "findings-and-remediation-matter-more-than-a-clean-slogan",
+      "title": "Findings and remediation matter more than a clean slogan",
+      "paragraphs": [
+        "A useful security report may contain vulnerabilities and recommendations. Finding problems does not automatically make the assessed provider worse than a competitor that publishes no results. Look at severity, practical impact, whether the issue affects your use, and what the report says about remediation. Distinguish a provider's statement that it fixed a problem from an assessor's documented retest. If the public material does not establish the status, label it unresolved in your own notes rather than declaring it fixed because a marketing summary sounds reassuring.",
+        "Equally, a report with few findings is not proof that no vulnerabilities exist. Assessments have time budgets, access limits and defined techniques. Read any limitations section carefully. An audit is evidence about an examination, not an exhaustive search across all possible failures. This is why ongoing updates, transparent incident handling and clear operational policies still matter after an audit has been completed. A sensible evaluation considers the provider's behavior over time rather than relying on one favorable PDF indefinitely."
+      ],
+      "sourceIds": [
+        1
+      ]
+    },
+    {
+      "id": "account-and-support-data-remain-relevant",
+      "title": "Account and support data remain relevant",
+      "paragraphs": [
+        "A service can avoid storing activity history while still maintaining an account record or interacting with a payment processor. Support tickets can contain information you submit voluntarily, including screenshots and diagnostic attachments. Mullvad's policy explicitly separates several of these areas, illustrating why you should read beyond the tunnel-related claim. Ask what identifiers connect the systems, which third parties are involved and what retention or deletion rules apply. Do not assume that an alternative payment method removes every other link to your activity or identity.",
+        "When contacting support, share the minimum information needed to explain the issue and inspect screenshots before uploading them. Avoid sending passwords, recovery codes or unrelated browsing records. If diagnostics are requested, consult documentation about their contents and redact sensitive details where appropriate. These habits do not establish anonymity, but they prevent unnecessary disclosure outside the exact area covered by a no-logs promise. A privacy decision should account for the whole customer relationship, not only the forwarding servers described on a product page."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "treat-jurisdiction-and-ownership-as-context",
+      "title": "Treat jurisdiction and ownership as context",
+      "paragraphs": [
+        "Ownership, operating locations and applicable laws can influence a provider's obligations and incentives. EFF recommends considering the countries in which a service does business and the possibility of legal demands. However, a country label by itself does not prove responsible operation or eliminate legal risk. A headquarters address, server location and corporate parent are different facts. Avoid reducing a complex policy assessment to a list of supposedly safe and unsafe countries without understanding the actual service and the information it retains.",
+        "For ordinary purchasing decisions, identify the operator and read its policy on legal requests and transparency reporting. For high-risk legal or personal situations, general affiliate guidance is not a substitute for qualified advice. No consumer comparison can promise that a service will withstand every future demand or technical compromise. The practical question is whether the available evidence and limitations fit your own security plan. If the consequences of an incorrect assumption would be severe, that uncertainty deserves more weight than a small subscription discount."
+      ],
+      "sourceIds": [
+        1
+      ]
+    },
+    {
+      "id": "build-a-compact-evidence-checklist-before-buying",
+      "title": "Build a compact evidence checklist before buying",
+      "paragraphs": [
+        "Record the current policy URL and date you read it, the audit report or summary, the assessor, the examined systems, the relevant dates, exclusions and any remediation notes. Separate provider statements from independent observations. Add the account and payment data categories that still exist, plus questions the public materials do not answer. This small evidence file makes it easier to compare services consistently and revisit a decision after a major product change, rather than relying on memory of a confident review headline.",
+        "Finally, do not confuse a favorable assessment with a requirement to subscribe. You may decide that the remaining trust transfer is not useful for your situation, or that account security and device maintenance are more urgent. If you do choose a provider, keep the app updated and revisit material policy changes. This guide deliberately assigns no universal privacy score: it teaches how to inspect evidence, not how to turn limited documentation into an unsupported guarantee. That distinction is central to making a defensible VPN choice."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "Choosing the VPN That's Right for You",
+      "publisher": "Electronic Frontier Foundation",
+      "url": "https://ssd.eff.org/module/choosing-vpn-thats-right-you",
+      "note": "Independent explanation of VPN trust, limitations, data collection and security priorities."
+    },
+    {
+      "title": "No-logging of user activity policy",
+      "publisher": "Mullvad",
+      "url": "https://mullvad.net/en/help/no-logging-data-policy",
+      "note": "A provider-published example distinguishing activity logs from account, payment and support data. This is a policy, not independent audit evidence."
+    },
+    {
+      "title": "What is HTTPS?",
+      "publisher": "Cloudflare Learning Center",
+      "url": "https://www.cloudflare.com/learning/ssl/what-is-https/",
+      "note": "Technical background on TLS encryption between a browser and website; not a VPN endorsement."
+    }
+  ],
+  "related": [
+    "/compare/nordvpn-vs-mullvad",
+    "/learn/vpn-vs-https",
+    "/learn/vpn-vs-proxy"
+  ],
+  "affiliate": false
+}

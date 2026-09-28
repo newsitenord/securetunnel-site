@@ -1,0 +1,34 @@
+import React from 'react';
+import Base from '../layouts/Base.jsx';
+import Crumbs from '../components/Crumbs.jsx';
+import { site } from '../config.js';
+export default function Template(props = {}) {
+  return <Base title="Contact SecureTunnel" description={`Corrections, questions and tips for ${site.name}. We fix factual errors when they are reported, and we would rather be corrected than quietly wrong.`} slug="/contact">
+  <div className="wrap narrow">
+    <Crumbs items={[{
+        label: 'Contact',
+        href: '/contact'
+      }]} />
+    <h1>Contact {site.name}</h1>
+    <p className="hub-intro">We would rather be corrected than quietly wrong. VPN pricing, features and national laws change constantly, and we will get things wrong.</p>
+
+    <h2>Report a factual error</h2>
+    <p>The most useful thing you can send us. Email <a href={`mailto:${site.email}`}>{site.email}</a> with the page URL and what is incorrect. Where an error was material we note the correction on the page rather than silently editing it.</p>
+
+    <h2>Questions about our recommendations</h2>
+    <p>If you think we have got a comparison wrong, or that we have been unfair to a service, tell us. We respond to substantive disagreements, particularly where a provider's published specifications differ from what we have written.</p>
+
+    <h2>Legal and takedown requests</h2>
+    <p>For trademark, copyright or legal correspondence, email <a href={`mailto:${site.email}`}>{site.email}</a> and we will respond promptly.</p>
+
+    <h2>What we cannot help with</h2>
+    <ul>
+      <li><strong>NordVPN account or billing issues.</strong> We are not NordVPN. Use their 24/7 live chat at nordvpn.com.</li>
+      <li><strong>Technical support for your VPN.</strong> We publish <a href="/fix">troubleshooting guides</a>, but we cannot debug your specific setup by email.</li>
+      <li><strong>Legal advice.</strong> Our <a href="/legal">legality pages</a> summarise published law for a general audience. They are not legal advice, and we are not lawyers.</li>
+    </ul>
+
+    <p><a href="/about">About us</a> &middot; <a href="/editorial-policy">How we test</a> &middot; <a href="/affiliate-disclosure">Affiliate disclosure</a></p>
+  </div>
+</Base>;
+}

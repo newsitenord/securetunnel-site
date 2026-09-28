@@ -1,0 +1,104 @@
+import React from 'react';
+import Base from '../../layouts/Base.jsx';
+import Crumbs from '../../components/Crumbs.jsx';
+import Cta from '../../components/Cta.jsx';
+import Faq from '../../components/Faq.jsx';
+import nordvpn from '../../data/nordvpn.js';
+import competitors from '../../data/competitors.js';
+import { site } from '../../config.js';
+export default function Template(props = {}) {
+  const n = nordvpn;
+  const t = n.pricing.tiers[0];
+  const picks = [{
+    id: 'surfshark',
+    reason: 'Best if you have more than ten devices',
+    detail: 'Unlimited simultaneous connections and a lower price, from the same parent company as NordVPN.'
+  }, {
+    id: 'protonvpn',
+    reason: 'Best free option, and the best privacy story',
+    detail: 'An unlimited-data free tier with no ads and no logs, from the team behind Proton Mail.'
+  }, {
+    id: 'mullvad',
+    reason: 'Best if privacy is the only thing that matters',
+    detail: 'No email address, no account, cash by post, and open-source audited clients.'
+  }, {
+    id: 'expressvpn',
+    reason: 'Best if you want the most polished apps',
+    detail: 'The cleanest software of any VPN and the least friction, at a meaningfully higher price.'
+  }, {
+    id: 'astrill',
+    reason: 'Best if you are in mainland China',
+    detail: 'The specialist for the Great Firewall. Expensive and unglamorous, and worth it for that one job.'
+  }, {
+    id: 'cyberghost',
+    reason: 'Best for beginners and the longest refund window',
+    detail: 'Purpose-labelled servers and 45 days to change your mind.'
+  }];
+  const faqs = [{
+    q: 'What is the best alternative to NordVPN?',
+    a: 'It depends on why you are looking. Surfshark if you need more than ten devices, Proton VPN if you want a genuine free tier, Mullvad if privacy is the only criterion, and Astrill if you are specifically in mainland China. There is no single best alternative because there is no single reason to leave.'
+  }, {
+    q: 'Is Surfshark owned by the same company as NordVPN?',
+    a: 'Yes. Both are part of the Nord Security group, though they operate as separate products with different networks, features and pricing. This is worth knowing when reading comparison content from either brand.'
+  }, {
+    q: 'Is NordVPN worth it over the cheaper options?',
+    a: `At $${t.twoYear} a month on a two-year term it costs more than Surfshark or Proton, and you are paying for the largest network, the fastest protocol we have measured, and the most reliable streaming unblocking. If none of those matter to you, the cheaper options are genuinely fine.`
+  }, {
+    q: 'Which NordVPN alternative is best for streaming?',
+    a: 'ExpressVPN is the closest rival on unblocking reliability. Budget options are more hit-and-miss because they have fewer IP ranges to rotate when a service blocks one.'
+  }];
+  return <Base title="Best NordVPN alternatives in 2026" description={`Six NordVPN alternatives, each chosen for a specific reason: Surfshark for unlimited devices, Proton VPN free, Mullvad for privacy, ExpressVPN for apps, Astrill for China. Plus when not to switch.`} slug="/nordvpn/alternatives">
+  <div className="wrap">
+    <Crumbs items={[{
+        label: 'Alternatives',
+        href: '/nordvpn/alternatives'
+      }]} />
+
+    <article className="narrow">
+      <p className="count">Verified {new Date(site.factsVerifiedOn).toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+          })}</p>
+      <h1>The best NordVPN alternatives, and when to actually switch</h1>
+      <p className="hub-intro">Most "NordVPN alternatives" articles list ten services in a random order. That is not useful, because there is no single reason to leave NordVPN &mdash; there are about five, and each one points to a different service.</p>
+
+
+
+      {picks.map(p => {
+          const c = competitors.find(x => x.id === p.id);
+          return c && <div className="verdict">
+            <h3>{p.reason}</h3>
+            <p><strong><a href={`/compare/nordvpn-vs-${c.id}`}>{c.name}</a></strong> &mdash; {p.detail}</p>
+            <p>{c.servers} servers in {c.countries} countries &middot; {c.devices} devices &middot; from {c.bestPrice} ({c.bestPriceNote}) &middot; {c.moneyBack} money-back</p>
+            <p><strong>The trade-off:</strong> {c.weaknesses[0]}</p>
+          </div>;
+        })}
+
+      <h2 id="stay">When you should not switch</h2>
+      <p>If you are looking for an alternative because of price, consider which tier you are on first. The Basic two-year plan at ${t.twoYear} a month includes the entire VPN &mdash; {n.network.servers} servers, {n.network.countries} countries, {n.devices.simultaneous} connections. Most of the price difference between NordVPN and budget rivals disappears once you compare like for like rather than comparing NordVPN Complete against a competitor's base tier.</p>
+      <p>If you are looking because a specific streaming service stopped working, switching provider is usually the wrong fix. Blocklists are per IP range, so a different city on the same provider works far more often than a different provider. Read <a href="/fix/netflix-blocked">our troubleshooting guide</a> first.</p>
+      <p>If you are looking because of renewal pricing, that is a real and legitimate complaint &mdash; but it is solved by cancelling before renewal and resubscribing at the current promotion, not by switching to a provider with the same model.</p>
+
+      <h2 id="table">All alternatives compared</h2>
+      <div className="tablewrap">
+        <table>
+          <thead><tr><th>Service</th><th>Servers</th><th>Countries</th><th>Devices</th><th>From</th><th>Free tier</th></tr></thead>
+          <tbody>
+            <tr><td className="hi"><strong>NordVPN</strong></td><td>{n.network.servers}</td><td>{n.network.countries}</td><td>{n.devices.simultaneous}</td><td className="num">${t.twoYear}/mo</td><td>3-day Android trial</td></tr>
+            {competitors.map((c, index) => <tr key={index}>
+                <td><a href={`/compare/nordvpn-vs-${c.id}`}>{c.name}</a></td>
+                <td>{c.servers}</td><td>{c.countries}</td><td>{c.devices}</td>
+                <td className="num">{c.bestPrice}</td><td>{c.freeTier}</td>
+              </tr>)}
+          </tbody>
+        </table>
+      </div>
+
+      <Cta slug="alternatives" title={`Or stay with NordVPN from $${t.twoYear}/month`} body={`${n.network.servers} servers in ${n.network.countries} countries. ${n.pricing.guarantee} means switching back costs you nothing.`} />
+
+      <Faq faqs={faqs} />
+    </article>
+  </div>
+</Base>;
+}

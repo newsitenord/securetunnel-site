@@ -1,0 +1,168 @@
+import React from 'react';
+import Base from '../../layouts/Base.jsx';
+import Crumbs from '../../components/Crumbs.jsx';
+import Cta from '../../components/Cta.jsx';
+import Faq from '../../components/Faq.jsx';
+import nordvpn from '../../data/nordvpn.js';
+import competitors from '../../data/competitors.js';
+import { site, legal } from '../../config.js';
+export function getStaticPaths() {
+  return competitors.map(c => ({
+    params: {
+      slug: `nordvpn-vs-${c.id}`
+    },
+    props: {
+      c
+    }
+  }));
+}
+export default function Template(props = {}) {
+  const {
+    c
+  } = props;
+  const n = nordvpn;
+  const t = n.pricing.tiers[0];
+  const verdictWord = c.verdict === 'nord' ? 'NordVPN wins' : c.verdict === 'split' ? 'It depends' : `${c.name} wins`;
+  const faqs = [{
+    q: `Is NordVPN better than ${c.name}?`,
+    a: c.verdictText
+  }, {
+    q: `Which is cheaper, NordVPN or ${c.name}?`,
+    a: `NordVPN's cheapest plan is the two-year Basic at $${t.twoYear} a month ($${t.twoYearTotal} for ${t.twoYearMonths} months). ${c.name}'s lowest published price is ${c.bestPrice} (${c.bestPriceNote}). Compare on the term you would actually buy, not on the headline number.`
+  }, {
+    q: `Does ${c.name} have a free version?`,
+    a: c.freeTier
+  }, {
+    q: `Is ${c.name} safe?`,
+    a: `${c.name} is operated by ${c.vendor} and is headquartered in ${c.hq}. ${c.hq.toLowerCase().includes('united states') ? 'A US base means US legal process reaches the company directly, which is worth weighing if privacy is your priority.' : `Jurisdiction matters less than logging policy \u2014 check whether ${c.name}'s no-logs claim has been independently audited before relying on it.`}`
+  }, {
+    q: `Which should I choose for streaming?`,
+    a: c.losesFor.toLowerCase().includes('stream') ? `NordVPN. ${c.name} is weaker on unblocking, and its smaller network gives it fewer IP ranges to rotate when a service flags one.` : `Both work, but NordVPN's ${n.network.servers} servers across ${n.network.locations} locations give it more addresses to rotate through when a streaming service blocks one \u2014 which is the difference that shows up months after you buy.`
+  }, {
+    q: `Can I get a refund from either?`,
+    a: `NordVPN offers ${n.pricing.guarantee}. ${c.name} offers ${c.moneyBack}. Test both inside the refund window if you are undecided \u2014 that is what the guarantee is for.`
+  }];
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: `NordVPN vs ${c.name} (${new Date(site.factsVerifiedOn).getFullYear()}): which should you buy?`,
+    datePublished: site.factsVerifiedOn,
+    dateModified: site.factsVerifiedOn,
+    author: {
+      '@type': 'Organization',
+      name: site.name
+    },
+    about: [{
+      '@type': 'SoftwareApplication',
+      name: 'NordVPN'
+    }, {
+      '@type': 'SoftwareApplication',
+      name: c.name
+    }]
+  };
+  const others = competitors.filter(o => o.id !== c.id).slice(0, 8);
+  return <Base title={`NordVPN vs ${c.name}: 2026 verdict`} description={`NordVPN vs ${c.name}: price, servers, countries, devices, protocols and streaming compared. Our verdict on which to buy in 2026.`} slug="/compare" schema={schema}>
+  <div className="wrap">
+    <Crumbs items={[{
+        label: 'Comparisons',
+        href: '/compare'
+      }, {
+        label: `NordVPN vs ${c.name}`,
+        href: `/compare/nordvpn-vs-${c.id}`
+      }]} />
+
+    <article className="narrow">
+      <p className="count">Verified {new Date(site.factsVerifiedOn).toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+          })} &middot; Specs as published by each provider</p>
+      <h1>NordVPN vs {c.name}: which should you actually buy?</h1>
+      <p className="hub-intro">{c.angle}</p>
+
+
+
+      <div className="verdict">
+        <h3>{verdictWord}</h3>
+        <p>{c.verdictText}</p>
+      </div>
+
+      <Cta slug={`compare-${c.id}`} title={c.verdict === 'nord' ? `NordVPN from $${t.twoYear}/month` : `Try NordVPN risk-free`} />
+
+      <h2 id="specs">Head-to-head specifications</h2>
+      <div className="tablewrap">
+        <table>
+          <thead>
+            <tr><th></th><th>NordVPN</th><th>{c.name}</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>Servers</th><td className="hi">{n.network.servers}</td><td>{c.servers}</td></tr>
+            <tr><th>Countries</th><td className="hi">{n.network.countries}</td><td>{c.countries}</td></tr>
+            <tr><th>Simultaneous devices</th><td>{n.devices.simultaneous}</td><td>{c.devices}</td></tr>
+            <tr><th>Lowest price</th><td className="num">${t.twoYear}/mo (2-year)</td><td className="num">{c.bestPrice}</td></tr>
+            <tr><th>Protocols</th><td>{n.protocols.map(p => p.name).join(', ')}</td><td>{c.protocols}</td></tr>
+            <tr><th>Free tier</th><td>3-day Android trial</td><td>{c.freeTier}</td></tr>
+            <tr><th>Money-back guarantee</th><td>{n.pricing.guarantee}</td><td>{c.moneyBack}</td></tr>
+            <tr><th>Jurisdiction</th><td>{n.jurisdiction}</td><td>{c.hq}</td></tr>
+            <tr><th>Operator</th><td>{n.vendor}</td><td>{c.vendor}</td></tr>
+            <tr><th>Our score</th><td className="hi">{n.score.overall}/5</td><td>{c.score}/5</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="strengths">Where {c.name} is genuinely better</h2>
+      <p>Being fair matters here, because every VPN wins somewhere.</p>
+      <ul>{c.strengths.map((s, index) => <li key={index}>{s}</li>)}</ul>
+
+      <h2 id="weaknesses">Where {c.name} falls short</h2>
+      <ul>{c.weaknesses.map((w, index) => <li key={index}>{w}</li>)}</ul>
+
+      <h2 id="nordvpn-case">The case for NordVPN</h2>
+      <p>NordVPN runs {n.network.servers} servers across {n.network.countries} countries and {n.network.locations} locations, which is a materially larger network than almost anything in this comparison. That matters for two concrete reasons: you are more likely to find a server geographically close to you, and when a streaming service blocks an IP range there are many more to rotate through.</p>
+      <p>Its protocol lineup is also broader. {n.protocols.map(p => p.name).join(', ')} cover speed, compatibility and censorship resistance. NordWhisper in particular exists for networks that block ordinary VPN traffic &mdash; a category many providers have no answer for at all.</p>
+      <p>On the commercial side, the two-year Basic plan is ${t.twoYear} a month (${t.twoYearTotal} for {t.twoYearMonths} months including three extra), backed by {n.pricing.guarantee}.</p>
+
+      <h2 id="decide">How to decide</h2>
+      <div className="proscons">
+        <div className="pc pros">
+          <h3>Choose NordVPN if</h3>
+          <ul>
+            <li>{c.losesFor}</li>
+            <li>You want the largest available server network</li>
+            <li>Streaming unblocking is a priority</li>
+            <li>You may travel somewhere with network filtering</li>
+          </ul>
+        </div>
+        <div className="pc cons">
+          <h3>Choose {c.name} if</h3>
+          <ul>
+            <li>{c.winsFor}</li>
+            <li>{c.strengths[0]}</li>
+            <li>{c.strengths[1]}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="note info">
+        <strong>The honest way to settle it:</strong> both services offer a money-back guarantee. Buy the one you think is right, use it properly for two weeks, and refund it if it is not. That costs you nothing and beats reading any comparison, including this one.
+      </div>
+
+      <Faq faqs={faqs} title={`NordVPN vs ${c.name}: common questions`} />
+
+      <section className="related">
+        <h2>More comparisons</h2>
+        <div className="grid">
+          {others.map((o, index) => <a className="card" href={`/compare/nordvpn-vs-${o.id}`} key={index}>
+              <h3>NordVPN vs {o.name}</h3>
+              <p>{o.servers} servers &middot; {o.bestPrice}</p>
+            </a>)}
+        </div>
+      </section>
+
+      <p className="disclosure" style={{
+          "marginTop": "2rem"
+        }}>{legal.specDisclaimer}</p>
+    </article>
+  </div>
+</Base>;
+}

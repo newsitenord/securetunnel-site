@@ -1,0 +1,138 @@
+{
+  "slug": "vpn-vs-proxy",
+  "status": "published",
+  "title": "VPN vs proxy: routing, encryption and scope",
+  "description": "Understand VPN and proxy differences, including browser-only routing, HTTPS, DNS behavior, operator trust and checks before using either service.",
+  "intent": "choose a VPN or forward proxy based on routing scope and trust",
+  "intro": "A VPN and a proxy can both put an intermediary between you and a website, but the label alone does not tell you what is encrypted or which applications are covered. A browser proxy may affect only that browser. A VPN usually works at a broader network level, but exclusions and split tunneling can narrow its coverage. The useful comparison is therefore scope, encryption, name resolution and trust—not simply which option changes your IP address.",
+  "method": "documentation",
+  "author": "SecureTunnel",
+  "publishedAt": "2026-09-28",
+  "updatedAt": "2026-09-28",
+  "sourcesCheckedOn": "2026-09-28",
+  "sections": [
+    {
+      "id": "start-with-the-correct-kind-of-proxy",
+      "title": "Start with the correct kind of proxy",
+      "paragraphs": [
+        "A forward proxy acts on behalf of clients. Your browser or another application sends requests to it, and it communicates with destinations on your behalf. This is the type usually meant in a consumer comparison with a VPN. A reverse proxy, by contrast, is deployed in front of a website's servers to handle incoming visitors. Cloudflare's explanation distinguishes these two roles. Seeing a website use a reverse proxy does not mean that your own internet connection has become a private browsing service.",
+        "This distinction matters when searching for help. Instructions for configuring a reverse proxy on a web server are not instructions for routing all traffic from your laptop. Likewise, a corporate filtering proxy is not necessarily designed to hide activity from your employer; its purpose may be enforcing policy and recording access. First establish who operates the intermediary, whose interests it serves and which side of the connection it sits on. That basic map makes the remaining technical choices much easier to understand."
+      ],
+      "sourceIds": [
+        1
+      ]
+    },
+    {
+      "id": "compare-scope-before-comparing-features",
+      "title": "Compare scope before comparing features",
+      "paragraphs": [
+        "An application-level proxy setting normally applies where that application uses it. Other applications may use a direct route, their own proxy settings or an operating-system configuration. A VPN can route traffic for multiple applications through a tunnel, but it may also exclude local networks, particular destinations or selected apps. Some products marketed as browser VPNs function as browser-scoped intermediaries rather than full-device tunnels. Read the product's actual coverage description instead of assuming that the name guarantees a particular implementation.",
+        "Picture a laptop running a browser, an email client and a video-call application. Changing a browser proxy can alter what an IP-check website sees while leaving the other two applications unchanged. A device VPN may cover all three, but split-tunneling rules can produce a mixed result. Your decision should begin with the applications that need a changed route. If only a development browser requires access to an authorized testing environment, a narrowly configured proxy may be appropriate; broad routing is not automatically better."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "encryption-has-more-than-one-boundary",
+      "title": "Encryption has more than one boundary",
+      "paragraphs": [
+        "Separate the connection to the intermediary from the connection to the destination. A VPN normally encrypts the tunnel between your device and its server. HTTPS encrypts the web connection between your browser and the website, regardless of whether that connection travels through an intermediary. A proxy can support encrypted transport, but not every proxy configuration does so. Conversely, HTTPS traffic can remain encrypted through a conventional tunneling proxy even when the proxy itself is not advertised as a VPN. The details depend on the protocol and configuration.",
+        "Avoid the oversimplified claim that proxies are always unencrypted while VPNs encrypt everything end to end. The real questions are which link is encrypted, who terminates each protected connection, and whether the destination itself uses HTTPS. If you visit a plain HTTP site, a VPN tunnel does not transform the segment beyond its exit into HTTPS. Do not enter sensitive information on such a site merely because a network app displays a connected symbol. A changed route and trustworthy destination encryption are separate requirements."
+      ],
+      "sourceIds": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "the-operator-is-part-of-the-threat-model",
+      "title": "The operator is part of the threat model",
+      "paragraphs": [
+        "Both approaches introduce an operator who can observe some connection information. Depending on the design, that may include your source address, destination addresses, timing, bandwidth use or unencrypted application content. Proper HTTPS limits visibility into web content, but it does not erase all metadata. EFF emphasizes that using a VPN transfers trust rather than eliminating it. Apply the same reasoning to a proxy provider. A free endpoint posted on an anonymous list gives you little basis for evaluating who controls it or why.",
+        "Never assume that availability in an app store, a polished homepage or an impressive location list proves responsible data handling. Look for a clear operator identity, a comprehensible privacy policy, retention details and an explanation of the business model. For a work proxy or VPN, your organization's administrator may be the relevant authority rather than a consumer review. Do not install unfamiliar root certificates to make a random proxy work. Certificate installation can change what connections the device trusts and deserves careful, context-specific evaluation."
+      ],
+      "sourceIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "dns-and-bypass-paths-deserve-their-own-checks",
+      "title": "DNS and bypass paths deserve their own checks",
+      "paragraphs": [
+        "When an application connects to a hostname, the name must be resolved somewhere. Proxy products and protocols differ in whether resolution happens locally or through the intermediary. VPN applications can also interact with operating-system DNS, browser encrypted-DNS settings and split-tunneling rules. A single public-IP result therefore cannot demonstrate the route used for every name lookup. Use official documentation to understand the expected behavior, then test the actual application and device rather than extrapolating from a marketing diagram.",
+        "A practical checklist records four things separately: the application's public address, the resolver behavior, any intentional exclusions and what happens when the intermediary disconnects. Perform these checks with non-sensitive traffic. A work device may use policy-managed settings that you should not alter without approval. Local printer access and private network routes can be intentional exceptions rather than evidence of a broken product. The goal is to distinguish documented boundaries from surprises, not to classify every difference as a leak without understanding its context."
+      ],
+      "sourceIds": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "evaluate-performance-without-assuming-a-winner",
+      "title": "Evaluate performance without assuming a winner",
+      "paragraphs": [
+        "Neither a proxy nor a VPN is inherently fastest in every situation. Distance to the intermediary, its load, your access connection, protocol overhead and the onward route can all influence performance. A nearby, well-provisioned VPN may outperform a distant, overloaded proxy, and the reverse can also happen. A successful page load says little about video-call latency or sustained uploads. Match your test to the task you actually need and repeat measurements instead of treating one favorable result as a general ranking.",
+        "For a fair personal comparison, keep the device, network and destination consistent, record which endpoint was selected, and test at more than one time. Note whether the browser proxy covers the test application; otherwise you may accidentally compare routed browser traffic with a direct native-app test. If a product provides only a browser extension, do not describe its result as whole-device performance. This guide makes no speed claim for a particular provider because no provider-specific benchmark was performed for it."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "when-a-proxy-is-enough-and-when-it-is-not",
+      "title": "When a proxy is enough and when it is not",
+      "paragraphs": [
+        "A proxy can be suitable when an authorized application needs a specific intermediary and its scope is clearly understood. Examples include a developer testing a service through an approved corporate gateway or a browser configured for an organization's access policy. The narrow scope can be useful because unrelated applications keep their usual route. However, it is not an appropriate substitute for a requirement that all designated device traffic use an encrypted tunnel with documented disconnect handling. That requirement needs a solution designed and configured for it.",
+        "A consumer VPN can be useful when the goal is broader network routing through a provider you have assessed. It still does not protect against every form of tracking, compromised software or credentials entered into a phishing site. If your only concern is secure access to an ordinary website, HTTPS already supplies an important layer of protection. If your task is connecting to an employer's internal systems, use the employer-approved service; buying an unrelated consumer VPN does not create authorization to those systems."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "make-the-decision-with-a-short-routing-worksheet",
+      "title": "Make the decision with a short routing worksheet",
+      "paragraphs": [
+        "Before choosing a service, write down the applications to cover, the intermediary operator, the encryption boundary, the DNS behavior and the expected response to connection loss. Add any intentional exceptions, such as a local printer or an application that must use the direct route. Then compare those requirements against official product documentation. This produces a testable decision rather than a generic preference for whichever product uses the stronger-sounding security language. Keep the worksheet small enough to revisit after a major app or operating-system update.",
+        "Finally, include the option to use neither. You may already have an appropriate work gateway, or your actual concern may be browser history, account takeover or a suspicious website rather than routing. Those require different controls. If you do choose an intermediary, retain HTTPS, keep applications updated and avoid making promises about anonymity that the design cannot support. Continue with our split-tunneling guide if you need selective coverage, or the HTTPS explainer if the remaining uncertainty concerns what an intermediary can read."
+      ],
+      "sourceIds": [
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "What is a reverse proxy? Proxy servers explained",
+      "publisher": "Cloudflare Learning Center",
+      "url": "https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/",
+      "note": "Explains forward and reverse proxy roles; individual proxy products can behave differently."
+    },
+    {
+      "title": "Choosing the VPN That's Right for You",
+      "publisher": "Electronic Frontier Foundation",
+      "url": "https://ssd.eff.org/module/choosing-vpn-thats-right-you",
+      "note": "Independent explanation of VPN trust, limitations, data collection and security priorities."
+    },
+    {
+      "title": "What is HTTPS?",
+      "publisher": "Cloudflare Learning Center",
+      "url": "https://www.cloudflare.com/learning/ssl/what-is-https/",
+      "note": "Technical background on TLS encryption between a browser and website; not a VPN endorsement."
+    }
+  ],
+  "related": [
+    "/guides/split-tunnelling-guide",
+    "/learn/vpn-vs-https",
+    "/learn/vpn-vs-private-browsing"
+  ],
+  "affiliate": true
+}
