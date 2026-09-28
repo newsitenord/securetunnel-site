@@ -3,7 +3,7 @@
 //
 // EDIT THIS FILE WHEN:
 //   1. You buy your real domain            -> change `site.url`
-//   2. NordVPN changes its prices          -> edit `data/nordvpn.json`
+//   2. NordVPN changes its prices          -> edit `data/nordvpn.js`
 //   3. You want per-page affiliate tracking -> set `affiliate.subIdParam`
 //
 // Everything else on the site reads from here. Nothing is hard-coded elsewhere.
@@ -12,9 +12,9 @@
 export const site = {
   url: 'https://securetunnel.netlify.app',
   name: 'SecureTunnel',
-  tagline: 'Independent VPN testing, deals and country-by-country privacy guides',
+  tagline: 'VPN comparisons and practical privacy guides',
   description:
-    'SecureTunnel tests and compares VPN services. We publish hands-on comparisons, country-by-country guides and verified deals — with the trade-offs spelled out, not hidden.',
+    'VPN comparisons, practical privacy explainers and country guides. Understand the trade-offs, check the sources and decide whether you need a VPN.',
   author: 'SecureTunnel Editorial Team',
   email: 'editor@securetunnel.co',
   twitter: '@securetunnel',
@@ -107,4 +107,5 @@ export const nav = [
   { label: 'Streaming', href: '/streaming' },
   { label: 'Is a VPN Legal?', href: '/legal' },
   { label: 'Guides', href: '/guides' },
+  { label: 'Learn', href: '/learn' },
 ];

@@ -1,0 +1,137 @@
+{
+  "slug": "test-vpn-speed-fairly",
+  "status": "published",
+  "title": "How to test VPN speed without misleading results",
+  "description": "Run a repeatable VPN speed comparison using matched endpoints, baseline tests, latency, jitter, packet loss and clearly labeled example calculations.",
+  "intent": "design and interpret a fair personal VPN speed test",
+  "intro": "A single speed-test screenshot cannot establish how fast a VPN will be for everyone. It reflects one device, one access network, one route, one test method and one moment. A useful personal comparison controls as many of those variables as practical and measures the things your work actually needs. This guide provides a repeatable method; it contains illustrative numbers, not measured results or a ranking of VPN providers.",
+  "method": "documentation",
+  "author": "SecureTunnel",
+  "publishedAt": "2026-09-28",
+  "updatedAt": "2026-09-28",
+  "sourcesCheckedOn": "2026-09-28",
+  "sections": [
+    {
+      "id": "define-the-task-before-collecting-numbers",
+      "title": "Define the task before collecting numbers",
+      "paragraphs": [
+        "Large downloads, video calls and online games stress a connection differently. Throughput describes how much data moves over time, commonly reported in megabits per second. Latency describes delay, often displayed as round-trip milliseconds. Jitter concerns variation in delay, and packet loss concerns data that fails to arrive. A high download number can coexist with poor responsiveness or unstable calls. Choose a few measurements tied to your task rather than assuming the largest number on the page is the complete answer.",
+        "Cloudflare explains that speed tests differ in endpoints, transfer patterns, stream counts and aggregation methods. Its own test emphasizes connection quality rather than simply trying to saturate the link. That does not make every other method invalid; it means different tools can answer different questions. Pick a primary tool, understand its published approach and use it consistently for the comparison. If you add a second tool, label its results separately instead of blending incompatible measurements into one unexplained average."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "establish-a-usable-baseline",
+      "title": "Establish a usable baseline",
+      "paragraphs": [
+        "Start on the device and connection you normally use. Record whether it is Wi-Fi, Ethernet or cellular, and note obvious background activity such as cloud backups or another household member's large upload. Where practical, use a stable wired connection for a controlled comparison, then separately test the Wi-Fi conditions that matter in daily use. Keep the device powered appropriately and avoid changing several hardware or software settings during the same measurement sequence. A moving baseline makes attribution difficult.",
+        "Run more than one test without the VPN and record the results rather than selecting only the best one. Note the time and the test endpoint when the tool exposes it. If the baseline already varies widely, investigate or document that variation before attributing later differences to the VPN. An inconsistent access link can overwhelm a modest routing effect. Baseline testing does not establish your internet provider's maximum possible capacity; it establishes a reference for the conditions under which your comparison is being made."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "control-the-destination-as-well-as-the-vpn-server",
+      "title": "Control the destination as well as the VPN server",
+      "paragraphs": [
+        "A VPN changes where traffic exits, which can also change the destination selected by an automatic speed-test service. You might unknowingly compare a nearby test server without the VPN against a server in another country with it. That measures a broader route change, not just tunnel overhead. If your tool allows manual endpoint selection, use the same endpoint for a controlled comparison and record it. If it uses automatic or anycast selection, acknowledge that limitation and record any location information available.",
+        "Also keep the VPN endpoint consistent within a test group. Record the provider, app version, selected protocol and server location; avoid publishing identifiers that expose personal account details. A nearby endpoint is a reasonable starting point for general performance, while a distant endpoint may be necessary for a specific work task. Test those as separate scenarios. Do not silently choose a favorable nearby result to represent a use case that actually requires a long international route. The relevant path is the one the reader or user will need."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "alternate-baseline-and-vpn-measurements",
+      "title": "Alternate baseline and VPN measurements",
+      "paragraphs": [
+        "A practical sequence is a baseline run, a VPN run, another baseline run and another VPN run, repeated enough to reveal obvious variation. Allow the connection to settle after each switch and make sure the test application is using the expected route. Alternating helps reveal changes in the underlying network during the session. It is not a laboratory guarantee, but it is more informative than comparing yesterday's best direct result with today's first VPN result and assigning the entire difference to one product.",
+        "Avoid running several speed tools simultaneously because they compete for the connection. Be mindful of data usage: repeated throughput tests can transfer substantial data, which matters on metered plans or while roaming. Stop once you have enough information for the practical decision instead of collecting numbers indefinitely. Save the raw observations in a small table with timestamps and conditions. Reporting the range alongside a representative value helps show instability that a single average could conceal. Do not delete inconvenient results unless you document a valid exclusion reason."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "interpret-download-changes-with-transparent-arithmetic",
+      "title": "Interpret download changes with transparent arithmetic",
+      "paragraphs": [
+        "For an illustrative calculation, suppose a direct connection has a representative download result of 200 Mbps and the VPN scenario has 160 Mbps. The difference is 40 Mbps, or 20 percent of the direct result. These figures are invented solely to explain the calculation; they are not SecureTunnel measurements. State both the absolute values and the percentage, because a percentage alone hides the usable capacity. A reduction can be noticeable in one workload and practically irrelevant in another.",
+        "If the VPN result is higher, report that too, but do not conclude that encryption inherently makes connections faster. The route, selected test endpoint, congestion or measurement variation may have changed. A faster result in one setup does not establish a general ability to bypass provider throttling. To investigate a suspected cause, you need additional evidence and a more controlled design. Honest reporting distinguishes the observation, the proposed explanation and what the test cannot determine, rather than collapsing all three into a confident marketing claim."
+      ],
+      "sourceIds": [
+        1
+      ]
+    },
+    {
+      "id": "include-latency-under-load-and-the-real-application",
+      "title": "Include latency under load and the real application",
+      "paragraphs": [
+        "Measure latency when the connection is idle and, where your tool supports it, while data transfers are active. Cloudflare's methodology explains this distinction and why loaded latency can matter for interactive use. A connection may feel responsive when idle but become difficult for calls while a large upload runs. Jitter and packet loss can also explain problems that a download measurement misses. These metrics deserve context; do not impose one universal threshold on every game, conferencing platform or network without knowing its requirements.",
+        "After the synthetic tests, try the actual task in a controlled, non-sensitive way. Join a test call, transfer a representative file you are authorized to share, or use the application's own connection diagnostics. Record observable problems rather than inventing a score. If the application uses split tunneling or its own proxy, confirm that the VPN comparison actually covers it. A browser-based test cannot establish the route of every native application, and a successful download cannot prove that a long meeting will remain stable."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "change-one-variable-when-investigating-a-problem",
+      "title": "Change one variable when investigating a problem",
+      "paragraphs": [
+        "If the VPN scenario is consistently worse for the task, try one supported change at a time, such as a different nearby endpoint or a protocol offered by the official client. Repeat the same basic sequence and keep the previous results. Do not disable the firewall, endpoint protection and connection-blocking controls all at once merely to maximize a number. Those changes can alter the risk profile and make it impossible to identify which factor affected performance. Work devices should remain within the organization's approved configuration.",
+        "Some limitations are outside the VPN's control: weak Wi-Fi, overloaded local equipment, a constrained mobile link or the destination service itself. Distance also imposes delay that software cannot simply remove. Cloudflare's latency explainer emphasizes the role of network paths and infrastructure. If the baseline is poor as well, start there rather than buying another subscription. If only one destination is affected, record that specificity. A broad claim that the entire provider is slow may be unsupported by a problem isolated to one route or application."
+      ],
+      "sourceIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "report-enough-context-for-the-result-to-mean-something",
+      "title": "Report enough context for the result to mean something",
+      "paragraphs": [
+        "A useful summary names the device, connection type, approximate region, test tool, endpoint behavior, VPN protocol, server location, test dates and number of observations. Include representative results and ranges, plus relevant exclusions or unexpected behavior. Remove account identifiers, exact personal addresses and any other information that does not help interpret the measurement. If you publish screenshots, inspect them for private details. Methodology should make the result understandable without turning a routine performance comparison into an unnecessary disclosure of personal information.",
+        "Finish with a conclusion proportional to the evidence: this configuration worked better or worse for these tasks under these conditions. Avoid declaring a universal fastest VPN from a small personal sample. Repeat the test after a substantial network or app change if the result still matters, and keep documentation-based advice separate from measured findings. This guide offers a way to gather your own evidence; it does not claim that a particular affiliate product has passed it. That boundary is what keeps a practical speed comparison useful and honest."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "How does Cloudflare’s Speed Test really work?",
+      "publisher": "Cloudflare Blog",
+      "url": "https://blog.cloudflare.com/how-does-cloudflares-speed-test-really-work/",
+      "note": "Documents its measurement approach, endpoint selection, throughput, loaded latency and packet-loss metrics."
+    },
+    {
+      "title": "What is latency? How to fix latency",
+      "publisher": "Cloudflare Learning Center",
+      "url": "https://www.cloudflare.com/learning/performance/glossary/what-is-latency/",
+      "note": "Background on distance, network delay and the distinction between throughput and latency."
+    },
+    {
+      "title": "Choosing the VPN That's Right for You",
+      "publisher": "Electronic Frontier Foundation",
+      "url": "https://ssd.eff.org/module/choosing-vpn-thats-right-you",
+      "note": "Independent explanation of VPN trust, limitations, data collection and security priorities."
+    }
+  ],
+  "related": [
+    "/fix/slow-speeds",
+    "/learn/vpn-vs-proxy",
+    "/guides/split-tunnelling-guide"
+  ],
+  "affiliate": true
+}

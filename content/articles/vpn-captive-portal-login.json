@@ -1,0 +1,137 @@
+{
+  "slug": "vpn-captive-portal-login",
+  "status": "published",
+  "title": "VPN and captive portals: connect to hotel Wi-Fi",
+  "description": "A careful hotel and airport Wi-Fi login checklist: identify captive portals, handle VPN conflicts, restore protection and know when to use cellular data.",
+  "intent": "resolve captive portal login conflicts without permanently disabling VPN protection",
+  "intro": "Hotel and airport Wi-Fi often requires a sign-in or terms page before granting internet access. That page is called a captive portal. A VPN that tries to connect immediately can conflict with this initial step, while a strict kill switch may deliberately block the traffic needed to display it. The solution is not to leave protection disabled all day. First identify the network, complete only the necessary login if you judge it safe, restore your chosen settings, and verify normal connectivity.",
+  "method": "documentation",
+  "author": "SecureTunnel",
+  "publishedAt": "2026-09-28",
+  "updatedAt": "2026-09-28",
+  "sourcesCheckedOn": "2026-09-28",
+  "sections": [
+    {
+      "id": "identify-a-captive-portal-before-changing-settings",
+      "title": "Identify a captive portal before changing settings",
+      "paragraphs": [
+        "A device can be associated with a Wi-Fi network without having unrestricted internet access. Captive networks commonly present a welcome page, ask for a room code, request an email address or require acceptance of terms. Apple documents this behavior for iPhone and iPad and explains how the operating system presents a login screen. A Wi-Fi symbol alone therefore does not prove that the internet connection is ready for a VPN. Look for a system notification or login window before treating the situation as a provider outage.",
+        "Confirm the correct network name with the venue rather than selecting the strongest signal or the name that sounds most official. If there are several similar names, ask staff which one to use. A captive page asking for a room number may be expected in a hotel, while a page demanding your personal email password is not an ordinary network requirement. Stop if the request seems unrelated or suspicious. You do not need to complete an unfamiliar login simply because the connection is offered for free."
+      ],
+      "sourceIds": [
+        1
+      ]
+    },
+    {
+      "id": "understand-the-vpn-and-portal-dependency",
+      "title": "Understand the VPN and portal dependency",
+      "paragraphs": [
+        "The portal may allow only a limited set of destinations until you authenticate. Meanwhile, the VPN needs an internet path to its server to establish the tunnel. A strict connection-blocking setting can add another condition: do not send ordinary traffic until the tunnel exists. This creates a practical dependency problem rather than proof that either feature is defective. Implementations vary; some clients and operating systems offer controlled captive-portal handling, while others require the user to make an explicit choice.",
+        "Before changing anything, inspect the VPN's official help for captive networks and note the settings currently enabled. An option labeled pause, disconnect, kill switch or always-on can have different effects in different products. Do not assume disconnecting the app automatically removes every blocking rule. Conversely, do not assume a temporary pause allows only portal traffic; background applications might communicate as well. If your threat model does not permit an unprotected interval, use another trusted connection instead of weakening the control to make this network work."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "use-the-operating-system-s-login-path-first",
+      "title": "Use the operating system's login path first",
+      "paragraphs": [
+        "On an iPhone or iPad, Apple's documented route begins in Settings, then Wi-Fi. Select the network and wait for the login page. If necessary, use the information control next to the network and choose Join Network. Complete only the expected network fields or terms. Apple also explains that canceling can disconnect the device or produce options for remaining associated without internet, depending on how the network was joined. Interface wording can change, so follow current operating-system help if your device differs.",
+        "Other platforms commonly show their own network sign-in notification; prefer that mechanism over following an unsolicited link in a message. Reopen the Wi-Fi details or reconnect once if the expected prompt is missing. Avoid repeatedly resetting every network setting as a first step, because that can remove saved networks and complicate diagnosis. Work devices may enforce connection rules you cannot or should not override. In that case, ask the organization's IT team for its approved captive-network process or use the connection method it recommends."
+      ],
+      "sourceIds": [
+        1
+      ]
+    },
+    {
+      "id": "if-a-temporary-exception-is-necessary",
+      "title": "If a temporary exception is necessary",
+      "paragraphs": [
+        "Only consider a temporary VPN pause after assessing the network and understanding the app's behavior. Close sensitive browser tabs and pause applications that might immediately synchronize private material. This reduces obvious activity but cannot guarantee that all background traffic stops. If a supported captive-portal exception exists, prefer the documented approach. Otherwise, decide whether the task is worth a short interval without the tunnel. For highly sensitive work, the safer decision can be to avoid the network entirely and use a trusted alternative.",
+        "Do not bypass HTTPS certificate warnings to reach an account or install a certificate, management profile or unknown app merely to obtain casual guest Wi-Fi. A legitimate enterprise onboarding process is a separate situation and should be verified through the responsible administrator. On a guest network, ask venue staff if login appears broken. The fact that a captive portal exists does not justify treating every warning as harmless. HTTPS still matters during this process, and the VPN cannot make a fraudulent login form trustworthy."
+      ],
+      "sourceIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "reconnect-deliberately-after-signing-in",
+      "title": "Reconnect deliberately after signing in",
+      "paragraphs": [
+        "After the portal confirms access, restore any VPN settings you intentionally paused. Check that the app reports an established connection rather than a connection attempt. If you rely on a kill switch or an always-on policy, verify that it is enabled again. Open a harmless HTTPS website first. An optional public-IP check can confirm that the browser's visible route changed, although it cannot establish that every application or reconnection scenario is covered. Perform sensitive work only after the connection matches the setup you intended.",
+        "Keep a simple note of what you changed so you do not leave an exception active after the immediate problem disappears. If the tunnel cannot connect even though ordinary internet access now works, move to normal VPN troubleshooting: inspect the error, verify the app is current and consult the provider's supported network options. Do not disable multiple security controls simultaneously. Changing one thing at a time helps distinguish a portal problem from a VPN compatibility issue, an account issue or a genuine network restriction."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "why-the-login-can-return-later",
+      "title": "Why the login can return later",
+      "paragraphs": [
+        "Captive networks can require a fresh login after a session expires, a device reconnects or the venue's access policy changes. Apple documents separate automatic-join and automatic-login controls for remembered networks. These settings influence whether the device reconnects and whether a welcome page appears again. They do not guarantee permanent access. If the portal returns, repeat the verification process rather than assuming your saved credentials or previous payment authorize every similarly named network you encounter during travel.",
+        "A device's privacy-oriented network features can also interact with how a venue recognizes returning devices, although the exact behavior depends on the operating system and network. Do not turn off privacy features globally as a generic first fix. Ask the venue how its session system works and use platform-specific documentation when a setting change is actually required. When leaving a location, consider disabling automatic joining or forgetting a network you no longer need. That is a narrower action than weakening device-wide privacy settings for future connections."
+      ],
+      "sourceIds": [
+        1
+      ]
+    },
+    {
+      "id": "know-when-to-switch-networks-instead",
+      "title": "Know when to switch networks instead",
+      "paragraphs": [
+        "Cellular data or a trusted personal hotspot can be more practical when the portal is unreliable, asks for excessive information or prevents your required VPN from working. This is not a claim that cellular service removes every privacy risk; it changes the network relationship and can avoid a particular untrusted hotspot. Check your data allowance and roaming costs before using it for large downloads or video calls. A connection that is convenient in one country may be expensive in another.",
+        "Stop troubleshooting the public network if the process requires violating workplace policy, ignoring unexplained security warnings or repeatedly exposing sensitive activity. A consumer VPN is not a remedy for every hostile local-network behavior, and EFF notes that implementation vulnerabilities can limit the protection people expect. Keep the device and VPN software updated before travel where possible. For situations involving targeted surveillance or unusually high personal risk, seek qualified security guidance rather than treating this general hotel-login workflow as a guarantee of safety."
+      ],
+      "sourceIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "a-repeatable-travel-checklist",
+      "title": "A repeatable travel checklist",
+      "paragraphs": [
+        "Before travel, update the operating system and VPN, keep access to multifactor authentication and know where the app's connection-blocking controls live. At the venue, confirm the network name, identify the portal, and use the system's sign-in flow. If a documented exception is needed, understand its scope and minimize unrelated activity. After login, restore the intended configuration and test a harmless HTTPS page. When leaving, remove unnecessary automatic-join settings. This sequence is more reliable than randomly toggling switches until something loads.",
+        "The key distinction is between getting permission to use the local network and establishing your preferred protected route over it. A captive portal handles the first task; the VPN handles the second. Neither authenticates every website you visit or replaces account security. If the first task cannot be completed without unacceptable risk, changing networks is a valid resolution. If it succeeds but the tunnel still fails, use the dedicated connection troubleshooting guide rather than repeating the portal login indefinitely."
+      ],
+      "sourceIds": [
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "Use captive Wi-Fi networks on your iPhone or iPad",
+      "publisher": "Apple Support",
+      "url": "https://support.apple.com/en-us/102554",
+      "note": "Official iPhone and iPad captive-network joining and automatic-login instructions."
+    },
+    {
+      "title": "Choosing the VPN That's Right for You",
+      "publisher": "Electronic Frontier Foundation",
+      "url": "https://ssd.eff.org/module/choosing-vpn-thats-right-you",
+      "note": "Independent explanation of VPN trust, limitations, data collection and security priorities."
+    },
+    {
+      "title": "What is HTTPS?",
+      "publisher": "Cloudflare Learning Center",
+      "url": "https://www.cloudflare.com/learning/ssl/what-is-https/",
+      "note": "Technical background on TLS encryption between a browser and website; not a VPN endorsement."
+    }
+  ],
+  "related": [
+    "/learn/vpn-on-public-wifi",
+    "/guides/what-is-kill-switch",
+    "/fix/not-connecting"
+  ],
+  "affiliate": false
+}

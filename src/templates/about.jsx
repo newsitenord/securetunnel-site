@@ -1,0 +1,51 @@
+import React from 'react';
+import Base from '../layouts/Base.jsx';
+import Crumbs from '../components/Crumbs.jsx';
+import { site } from '../config.js';
+import competitors from '../data/competitors.js';
+import countries from '../data/countries.js';
+import guides from '../data/guides.js';
+export default function Template(props = {}) {
+  return <Base title="About SecureTunnel: how we test and get paid" description="SecureTunnel is an independent VPN review site. We explain exactly how we are funded, how we test, what we will not do, and how to correct us when we are wrong." slug="/about">
+  <div className="wrap narrow">
+    <Crumbs items={[{
+        label: 'About',
+        href: '/about'
+      }]} />
+    <h1>About {site.name}</h1>
+    <p className="hub-intro">{site.description}</p>
+
+
+
+    <h2>What we cover</h2>
+    <p>{site.name} publishes {competitors.length} head-to-head VPN comparisons, {countries.length} country guides covering censorship, retention law and local streaming, {guides.length} technical explainers, and troubleshooting guides for the problems people actually search for at 11pm.</p>
+
+    <h2>How we are funded</h2>
+    <p>We earn affiliate commissions, principally from NordVPN. When you buy a subscription through one of our links, the provider pays us a percentage of the sale. This costs you nothing &mdash; the price is identical whether you use our link or go direct.</p>
+    <p>That arrangement creates an obvious conflict of interest, so here is how we handle it rather than pretending it does not exist:</p>
+    <ul>
+      <li><strong>We publish the cons with the same visual weight as the pros.</strong> Every review has a "what we did not like" section that is not buried at the bottom.</li>
+      <li><strong>We name who should buy something else.</strong> Several pages end by recommending a competitor. Surfshark for large households, Mullvad for privacy purists, Proton VPN Free for anyone unwilling to pay.</li>
+      <li><strong>We do not accept payment for coverage.</strong> No provider has paid for a review, a ranking position or the removal of criticism.</li>
+      <li><strong>We date our facts.</strong> Every price and specification carries a verification date, so you can judge how current it is.</li>
+    </ul>
+
+    <h2>What we will not do</h2>
+    <ul>
+      <li>We will not claim a VPN makes you anonymous, because it does not.</li>
+      <li>We will not claim a VPN works in a country where no provider can guarantee access.</li>
+      <li>We will not describe a service's limitations as features.</li>
+      <li>We will not publish a comparison where we have not read the provider's own published specifications.</li>
+      <li>We will not write that a VPN is legal in a country where the legal position is genuinely unclear &mdash; we say it is unclear.</li>
+    </ul>
+
+    <h2>Corrections</h2>
+    <p>VPN pricing, features and national laws change constantly, and we will get things wrong. If you spot an error, email <a href={`mailto:${site.email}`}>{site.email}</a> and we will fix it and note the correction. We would rather be corrected than quietly wrong.</p>
+
+    <h2>Independence</h2>
+    <p>{site.name} is not affiliated with, sponsored by, or endorsed by Nord Security, NordVPN, or any VPN provider. NordVPN is a registered trademark of NordSec B.V. We are an independent review site that earns affiliate commissions.</p>
+
+    <p><a href="/editorial-policy">Read our testing methodology</a> &middot; <a href="/affiliate-disclosure">Full affiliate disclosure</a> &middot; <a href="/contact">Contact us</a></p>
+  </div>
+</Base>;
+}

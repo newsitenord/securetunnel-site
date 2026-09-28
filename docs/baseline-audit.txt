@@ -1,0 +1,60 @@
+
+> securetunnel-vpn-site@1.0.0 audit
+> node scripts/audit.mjs
+
+
+================ BUILD AUDIT ================
+Pages built            : 282
+Site URL               : https://securetunnel.netlify.app
+Avg words per page     : 1009
+Min / max words        : 338 / 3093
+Pages under 350 words  : 1
+Internal links checked : 16491 (broken: 0)
+Sitemap URLs           : 281
+Unique titles          : 282
+Unique descriptions    : 282
+Pages with JSON-LD     : 282
+Pages with disclosure  : 282
+
+Section breakdown:
+   122  /watch
+    41  /vpn
+    27  /legal
+    23  /compare
+    17  /devices
+    15  /guides
+    11  /fix
+    11  /use
+     3  /learn
+     1  /404
+     1  /about
+     1  /affiliate-disclosure
+     1  /contact
+     1  /deals
+     1  /editorial-policy
+     1  /home
+     1  /nordvpn
+     1  /pricing
+     1  /privacy-policy
+     1  /reviews
+     1  /streaming
+
+Thinnest pages:
+    338 words  /404
+    356 words  /learn/
+    453 words  /contact/
+    527 words  /privacy-policy/
+    625 words  /devices/nordvpn-for-chromebook/
+    629 words  /use/
+    636 words  /legal/japan/
+    638 words  /legal/north-korea/
+
+--- ERRORS: 0 ---
+
+--- WARNINGS: 2 (grouped) ---
+  ! [1] meta description short (N chars)
+        e.g. /404: meta description short (72 chars)
+  ! [1] thin page (N words)
+        e.g. /404: thin page (338 words)
+
+✅ AUDIT PASSED (no errors)

@@ -1,0 +1,137 @@
+{
+  "slug": "vpn-vs-private-browsing",
+  "status": "published",
+  "title": "VPN vs private browsing: which privacy problem?",
+  "description": "Compare VPNs with incognito and private windows: local history, cookies, IP addresses, account tracking, shared devices and practical privacy checks.",
+  "intent": "decide between a VPN and private browsing for local history and network privacy",
+  "intro": "A private window and a VPN solve different problems. A private window mainly changes what the browser retains after a session. A VPN changes the network route used by covered traffic. Neither prevents a website from recognizing an account you sign into. Before paying for anything, identify who you want privacy from: another person using your device, the local network, a website, or someone with access to your accounts. The right answer may be a browser setting rather than a subscription.",
+  "method": "documentation",
+  "author": "SecureTunnel",
+  "publishedAt": "2026-09-28",
+  "updatedAt": "2026-09-28",
+  "sourcesCheckedOn": "2026-09-28",
+  "sections": [
+    {
+      "id": "what-a-private-window-actually-changes",
+      "title": "What a private window actually changes",
+      "paragraphs": [
+        "In Firefox, private browsing keeps session cookies separate from normal browsing and does not add visited pages to the usual history. Temporary private-session data is discarded when the private session ends. Mozilla also documents exceptions: downloaded files remain on the computer, and bookmarks or passwords you deliberately save can remain. Private browsing is therefore a useful local-history tool, not a promise that an activity leaves no evidence anywhere. Browser versions and operating systems can differ, so check the documentation for the browser you actually use.",
+        "Imagine researching a birthday present on a laptop that your partner occasionally borrows. A private window can reduce the chance of the product appearing in the browser's ordinary history. However, a downloaded receipt, a saved bookmark, an email confirmation or a purchase visible in your shopping account can still reveal the surprise. Close the whole private session when finished, not just the shopping tab. Do not use this example as a security plan against someone who controls the device or has installed monitoring software."
+      ],
+      "sourceIds": [
+        1
+      ]
+    },
+    {
+      "id": "what-a-vpn-changes-instead",
+      "title": "What a VPN changes instead",
+      "paragraphs": [
+        "For traffic routed through it, a VPN establishes an encrypted tunnel between your device and the VPN server. A destination website typically sees the VPN exit address rather than your ordinary connection's public address. Your internet provider still sees that you are connected to a VPN endpoint and can observe timing and traffic volume. The VPN operator becomes an additional party you must trust. HTTPS continues to protect browser-to-website content independently of the VPN, assuming a legitimate connection without interception on the device.",
+        "None of those routing changes automatically clears browsing history. If you connect a VPN and search for a product in your regular browser profile, that search may still appear in local history and in the account you used. Likewise, a VPN on one device does not protect every other device sharing the household Wi-Fi. Browser extensions may cover only that browser rather than every app. Establish which traffic is actually included before assuming that a changed IP address answers all of your privacy questions."
+      ],
+      "sourceIds": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "why-signing-in-changes-the-picture",
+      "title": "Why signing in changes the picture",
+      "paragraphs": [
+        "A private session begins without the normal profile's existing website cookies, but it can create new cookies while you browse. If you sign into your usual email, social or shopping account, the service can associate your actions with that account. Using a VPN at the same time does not undo the login. The service might see a different IP address, yet still know exactly which customer is viewing or buying something. Account identity is often a more direct identifier than an IP address.",
+        "Consider reading an article while signed out, then logging into the publication to comment. The publication now has information supplied by your account regardless of the browser window's label. Closing the private session can remove local session data, but it does not instruct the publication to delete comments, server logs or account history. Use the service's own privacy and deletion controls where appropriate. Do not confuse a local browser cleanup with an erasure request to an organization that already received information."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "shared-computers-need-a-different-safety-plan",
+      "title": "Shared computers need a different safety plan",
+      "paragraphs": [
+        "On a device that other people administer, private browsing and a VPN cannot guarantee confidentiality. Monitoring software can observe input or screen activity before network encryption begins. An employer's managed device can also have security software and policies that operate outside the browser. Mozilla explicitly warns that private browsing does not protect against spyware or keyloggers. If the device itself is not trustworthy, changing browser mode does not fix the underlying problem, and installing an unauthorized VPN may violate workplace rules.",
+        "For an ordinary shared household computer, separate operating-system accounts and a reliable screen lock are often more useful than paying for another network service. Avoid saving passwords in someone else's browser profile. Sign out when finished and inspect the downloads folder if you saved anything sensitive. When handling particularly private information, prefer a device you control and keep updated. If another person may be monitoring you or retaliate when settings change, seek suitable safety support before modifying the device; abrupt changes can themselves be noticed."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "a-small-test-that-reveals-the-difference",
+      "title": "A small test that reveals the difference",
+      "paragraphs": [
+        "You can demonstrate these boundaries without using sensitive material. Open your normal browser and visit a harmless public page. Note whether it appears in history. Open a private window, visit a different harmless page, end the private session, and inspect ordinary history again. Next, download a small non-sensitive file in a private session and confirm that the file remains after you close it. Delete the test file when finished. These checks illustrate local retention, not a complete forensic examination of the computer.",
+        "Separately, if you already have a VPN, compare the public IP reported by a reputable checking service before and after connecting. Repeat in each browser or app whose routing matters, remembering that one browser result does not prove coverage for every application. An address change demonstrates a routing difference; it does not establish anonymity or prove that DNS, IPv6 and every reconnection condition are handled correctly. Do not buy a subscription merely to perform this demonstration. The documentation already explains the essential distinction."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "when-using-both-is-reasonable",
+      "title": "When using both is reasonable",
+      "paragraphs": [
+        "The combination can make sense when you have two separate needs. For example, you may want a temporary browser session on your own device and also prefer that a trusted VPN, rather than the hotel's network, handle your outbound internet route. The private window addresses local session persistence. The VPN addresses a portion of network visibility. HTTPS remains important for the actual connection to the website. Each measure has a defined role, so adding them together is not equivalent to becoming invisible.",
+        "There are practical trade-offs. Logging in again takes time, a new exit address may trigger account verification, and some websites challenge or block VPN addresses. Keep access to your multifactor authentication method when traveling. Never respond to account friction by disabling security controls permanently or handing credentials to an unfamiliar support chat. If you only need to check a website without existing cookies, a private window may be sufficient. If your issue is an account breach, change compromised credentials and review sessions rather than starting with network software."
+      ],
+      "sourceIds": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "choose-by-observer-not-by-marketing-label",
+      "title": "Choose by observer, not by marketing label",
+      "paragraphs": [
+        "Write one sentence describing the outcome you want. If it is “do not save this browsing session in the normal history,” begin with private browsing and check its exceptions. If it is “hide my ordinary public IP from this website,” a properly routed VPN may address that specific requirement. If it is “stop this website recognizing my signed-in account,” neither tool changes the fact that you are signed in. If it is “keep my employer from seeing activity on its managed laptop,” do not assume either option provides that assurance.",
+        "Also consider whether the privacy improvement matters enough to justify additional complexity. A password manager, account security review, operating-system update or stronger device lock may reduce a more immediate risk. EFF recommends evaluating VPNs against a security plan rather than treating them as an all-purpose protection package. A sensible outcome is sometimes to use the browser feature you already have and buy nothing. The decision should follow the observer and the information at risk, not a general feeling that more privacy-branded apps must be better."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "a-practical-end-of-session-checklist",
+      "title": "A practical end-of-session checklist",
+      "paragraphs": [
+        "Before leaving a private session, sign out of accounts where appropriate, close the complete session, check whether files were downloaded, and remember that website-side records still exist. Before relying on a VPN, confirm that the intended device and app are included and that you trust the provider's policies. Keep HTTPS enabled, pay attention to certificate warnings, and avoid doing sensitive work on a device you do not control. These steps each address a different failure mode; no single indicator replaces the rest.",
+        "For future decisions, keep the two questions separate: what remains on this device, and who handles this traffic on the network? This distinction prevents expensive misunderstandings, such as subscribing to a VPN to conceal browser history or assuming a private window hides an IP address. Continue with our HTTPS comparison for the encryption boundary and the password-manager guide for account protection. Those are adjacent topics, but they should not be collapsed into a single claim that one product solves every privacy problem."
+      ],
+      "sourceIds": [
+        1,
+        2
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "Private Browsing — Use Firefox without saving history",
+      "publisher": "Mozilla Support",
+      "url": "https://support.mozilla.org/en-US/kb/private-browsing-use-firefox-without-history",
+      "note": "Firefox documentation on temporary cookies, saved downloads and the limits of private windows."
+    },
+    {
+      "title": "Choosing the VPN That's Right for You",
+      "publisher": "Electronic Frontier Foundation",
+      "url": "https://ssd.eff.org/module/choosing-vpn-thats-right-you",
+      "note": "Independent explanation of VPN trust, limitations, data collection and security priorities."
+    },
+    {
+      "title": "What is HTTPS?",
+      "publisher": "Cloudflare Learning Center",
+      "url": "https://www.cloudflare.com/learning/ssl/what-is-https/",
+      "note": "Technical background on TLS encryption between a browser and website; not a VPN endorsement."
+    }
+  ],
+  "related": [
+    "/learn/vpn-vs-https",
+    "/learn/vpn-and-password-managers",
+    "/guides/vpn-myths"
+  ],
+  "affiliate": false
+}
